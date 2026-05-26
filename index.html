@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Being Focus</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Inter',sans-serif;
+      background:#050505;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    body::before{
+      content:'';
+      position:fixed;
+      width:600px;
+      height:600px;
+      background:radial-gradient(circle,#ff003c20,transparent 70%);
+      top:-200px;
+      right:-100px;
+      z-index:-1;
+    }
+
+    body::after{
+      content:'';
+      position:fixed;
+      width:500px;
+      height:500px;
+      background:radial-gradient(circle,#ff003c15,transparent 70%);
+      bottom:-200px;
+      left:-100px;
+      z-index:-1;
+    }
+
+    .container{
+      width:90%;
+      max-width:1300px;
+      margin:auto;
+    }
+
+    nav{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:30px 0;
+    }
+
+    .logo{
+      font-size:1.4rem;
+      font-weight:800;
+      letter-spacing:1px;
+    }
+
+    .logo span{
+      color:#ff0048;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:30px;
+    }
+
+    .nav-links a{
+      color:#bbb;
+      text-decoration:none;
+      transition:0.3s;
+      font-size:0.95rem;
+    }
+
+    .nav-links a:hover{
+      color:white;
+    }
+
+    .hero{
+      min-height:90vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      position:relative;
+    }
+
+    .hero-content{
+      max-width:900px;
+    }
+
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      background:#101010;
+      border:1px solid #1d1d1d;
+      padding:12px 22px;
+      border-radius:50px;
+      margin-bottom:30px;
+      color:#ff0048;
+      font-weight:600;
+      box-shadow:0 0 30px #ff003c1c;
+    }
+
+    .dot{
+      width:10px;
+      height:10px;
+      background:#ff0048;
+      border-radius:50%;
+      animation:pulse 1.5s infinite;
+    }
+
+    @keyframes pulse{
+      0%{
+        transform:scale(1);
+        opacity:1;
+      }
+      100%{
+        transform:scale(2);
+        opacity:0;
+      }
+    }
+
+    .hero h1{
+      font-size:6rem;
+      line-height:1;
+      font-weight:900;
+      margin-bottom:30px;
+      letter-spacing:-4px;
+    }
+
+    .hero h1 span{
+      color:#ff0048;
+    }
+
+    .hero p{
+      color:#9d9d9d;
+      font-size:1.2rem;
+      line-height:1.8;
+      max-width:700px;
+      margin:auto;
+      margin-bottom:40px;
+    }
+
+    .hero-buttons{
+      display:flex;
+      justify-content:center;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      padding:18px 38px;
+      border-radius:50px;
+      text-decoration:none;
+      font-weight:700;
+      transition:0.4s;
+    }
+
+    .primary-btn{
+      background:#ff0048;
+      color:white;
+      box-shadow:0 0 40px #ff00486c;
+    }
+
+    .primary-btn:hover{
+      transform:translateY(-5px);
+      box-shadow:0 0 60px #ff0048a0;
+    }
+
+    .secondary-btn{
+      border:1px solid #2a2a2a;
+      color:white;
+      background:#101010;
+    }
+
+    .secondary-btn:hover{
+      background:#181818;
+    }
+
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:25px;
+      margin-top:80px;
+    }
+
+    .card{
+      background:linear-gradient(145deg,#0d0d0d,#111111);
+      border:1px solid #1f1f1f;
+      border-radius:28px;
+      padding:40px;
+      transition:0.4s;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .card::before{
+      content:'';
+      position:absolute;
+      width:200px;
+      height:200px;
+      background:#ff004814;
+      border-radius:50%;
+      top:-100px;
+      right:-100px;
+    }
+
+    .card:hover{
+      transform:translateY(-10px);
+      border-color:#ff00484d;
+      box-shadow:0 0 40px #ff00481c;
+    }
+
+    .card h2{
+      font-size:3rem;
+      color:#ff0048;
+      margin-bottom:20px;
+    }
+
+    .card h4{
+      margin-bottom:15px;
+      font-size:1.2rem;
+    }
+
+    .card p{
+      color:#909090;
+      line-height:1.7;
+    }
+
+    .section{
+      padding:140px 0;
+    }
+
+    .section-title{
+      text-align:center;
+      margin-bottom:70px;
+    }
+
+    .section-title h2{
+      font-size:4rem;
+      margin-bottom:20px;
+    }
+
+    .section-title p{
+      color:#8a8a8a;
+      max-width:700px;
+      margin:auto;
+      line-height:1.8;
+    }
+
+    .timeline{
+      display:flex;
+      flex-direction:column;
+      gap:40px;
+      max-width:900px;
+      margin:auto;
+    }
+
+    .timeline-item{
+      display:flex;
+      gap:25px;
+      align-items:flex-start;
+      background:#0d0d0d;
+      border:1px solid #1f1f1f;
+      padding:35px;
+      border-radius:25px;
+      transition:0.4s;
+    }
+
+    .timeline-item:hover{
+      transform:translateX(10px);
+      border-color:#ff004852;
+    }
+
+    .timeline-dot{
+      width:18px;
+      height:18px;
+      background:#ff0048;
+      border-radius:50%;
+      margin-top:8px;
+      box-shadow:0 0 25px #ff0048;
+      flex-shrink:0;
+    }
+
+    .timeline-content h3{
+      margin-bottom:15px;
+      font-size:1.4rem;
+    }
+
+    .timeline-content p{
+      color:#979797;
+      line-height:1.8;
+    }
+
+    .cta{
+      text-align:center;
+      padding:120px 30px;
+      border-radius:40px;
+      background:linear-gradient(to right,#0f0f0f,#1a1a1a);
+      border:1px solid #242424;
+      margin-bottom:100px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .cta::before{
+      content:'';
+      position:absolute;
+      width:400px;
+      height:400px;
+      background:#ff00481a;
+      border-radius:50%;
+      top:-200px;
+      right:-100px;
+    }
+
+    .cta h2{
+      font-size:4rem;
+      margin-bottom:25px;
+    }
+
+    .cta p{
+      color:#9c9c9c;
+      max-width:700px;
+      margin:auto;
+      margin-bottom:40px;
+      line-height:1.8;
+    }
+
+    footer{
+      padding:40px 0;
+      border-top:1px solid #181818;
+      text-align:center;
+      color:#7c7c7c;
+      font-size:0.95rem;
+    }
+
+    @media(max-width:768px){
+
+      .hero h1{
+        font-size:3.7rem;
+      }
+
+      .section-title h2{
+        font-size:2.7rem;
+      }
+
+      .cta h2{
+        font-size:2.8rem;
+      }
+
+      nav{
+        flex-direction:column;
+        gap:20px;
+      }
+
+      .nav-links{
+        gap:15px;
+        flex-wrap:wrap;
+        justify-content:center;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <nav>
+      <div class="logo">
+        <span>●</span> BEING FOCUS
+      </div>
+
+      <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">Features</a>
+        <a href="#">Community</a>
+        <a href="#">Join Waitlist</a>
+      </div>
+    </nav>
+
+    <section class="hero">
+
+      <div class="hero-content">
+
+        <div class="tag">
+          <div class="dot"></div>
+          Focus Protocol Active
+        </div>
+
+        <h1>
+          RECLAIM <br>
+          YOUR <span>MIND</span>
+        </h1>
+
+        <p>
+          Human attention is getting destroyed by endless scrolling, notifications, and dopamine loops. 
+          Being Focus helps creators, freelancers, and deep thinkers build a distraction free digital life.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#" class="btn primary-btn">
+            Start Your Journey
+          </a>
+
+          <a href="#" class="btn secondary-btn">
+            Explore Platform
+          </a>
+        </div>
+
+        <div class="stats">
+
+          <div class="card">
+            <h2>08s</h2>
+            <h4>The Goldfish Baseline</h4>
+            <p>
+              Most people lose focus within seconds because attention is constantly interrupted.
+            </p>
+          </div>
+
+          <div class="card">
+            <h2>150+</h2>
+            <h4>Daily Interruptions</h4>
+            <p>
+              Notifications, reels, emails, and pings slowly train the brain to stay distracted.
+            </p>
+          </div>
+
+          <div class="card">
+            <h2>123%</h2>
+            <h4>Focus Decline</h4>
+            <p>
+              Modern digital habits are creating burnout, anxiety, and low concentration levels.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="section">
+
+      <div class="section-title">
+        <h2>The Focus Roadmap</h2>
+
+        <p>
+          A modern ecosystem designed for people who want clarity, deep work, productivity, and mental peace.
+        </p>
+      </div>
+
+      <div class="timeline">
+
+        <div class="timeline-item">
+
+          <div class="timeline-dot"></div>
+
+          <div class="timeline-content">
+            <h3>Phase 1: Digital Foundation</h3>
+
+            <p>
+              Smart tracking systems, focus analytics, productivity rituals, and distraction blocking systems.
+            </p>
+          </div>
+
+        </div>
+
+        <div class="timeline-item">
+
+          <div class="timeline-dot"></div>
+
+          <div class="timeline-content">
+            <h3>Phase 2: Community Connection</h3>
+
+            <p>
+              Build accountability with creators, freelancers, and deep workers through focus communities.
+            </p>
+          </div>
+
+        </div>
+
+        <div class="timeline-item">
+
+          <div class="timeline-dot"></div>
+
+          <div class="timeline-content">
+            <h3>Phase 3: Physical Focus Cafés</h3>
+
+            <p>
+              Real world productivity spaces designed for high concentration and meaningful creative work.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="cta">
+
+      <h2>
+        Your Brain Deserves Better
+      </h2>
+
+      <p>
+        Stop renting your attention to algorithms. Start building a life where your focus actually belongs to you.
+      </p>
+
+      <a href="#" class="btn primary-btn">
+        Join The Waitlist
+      </a>
+
+    </section>
+
+    <footer>
+      © 2026 BEING FOCUS. Crafted for creators and deep thinkers.
+    </footer>
+
+  </div>
+
+</body>
+</html>
